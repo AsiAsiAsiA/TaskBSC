@@ -1,11 +1,13 @@
-package com.example.taskbsc;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+package com.example.taskbsc.ui;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.taskbsc.R;
+import com.example.taskbsc.moxyandroidx.MvpAppCompatActivity;
+
+import androidx.fragment.app.Fragment;
+
+public class MainActivity extends MvpAppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
