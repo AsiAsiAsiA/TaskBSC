@@ -36,8 +36,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.Accoun
         return new AccountsViewHolder(view);
     }
 
-    //TODO: реализовать RecyclerView для одного ViewType
-    //TODO: реализовать RecyclerView для разных ViewType
+    //TODO: pattern DelegateAdapter for 1 viewType
     @Override
     public void onBindViewHolder(@NonNull AccountsViewHolder holder, int position) {
         holder.bind(accounts.get(position));

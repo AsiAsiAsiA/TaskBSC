@@ -6,6 +6,7 @@ import com.example.taskbsc.data.AccountsManager;
 import com.example.taskbsc.domain.Account;
 import com.example.taskbsc.ui.view.CurrencyListView;
 
+import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.Nullable;
@@ -13,7 +14,12 @@ import androidx.annotation.Nullable;
 @InjectViewState
 public class Presenter extends MvpPresenter<CurrencyListView> {
     public void getAccountsList() {
-        loadList(AccountsManager.fetchAccounts());
+        List<Account> list = AccountsManager.fetchAccounts();
+
+        Collections.sort(list, (a1, a2) ->
+                a1.getCurrency().ordinal() - a2.getCurrency().ordinal());
+
+        loadList(list);
     }
 
     private void loadList(@Nullable List<Account> accounts) {
