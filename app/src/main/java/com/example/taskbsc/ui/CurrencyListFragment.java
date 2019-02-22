@@ -10,7 +10,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.taskbsc.R;
 import com.example.taskbsc.domain.Account;
 import com.example.taskbsc.moxyandroidx.MvpAppCompatFragment;
-import com.example.taskbsc.ui.adapter.AccountsAdapter;
+import com.example.taskbsc.ui.adapter.CompositeDelegateAdapter;
+import com.example.taskbsc.ui.adapter.UsdDelegateAdapter;
 import com.example.taskbsc.ui.presenter.Presenter;
 import com.example.taskbsc.ui.view.CurrencyListView;
 
@@ -29,10 +30,11 @@ import androidx.recyclerview.widget.RecyclerView;
  * A simple {@link Fragment} subclass.
  */
 public class CurrencyListFragment extends MvpAppCompatFragment implements CurrencyListView {
+
     private static final String TAG = CurrencyListFragment.class.getSimpleName();
     @InjectPresenter
     Presenter presenter;
-    private AccountsAdapter adapter;
+    private CompositeDelegateAdapter adapter;
 
     static Fragment newInstance() {
         return new CurrencyListFragment();
@@ -41,7 +43,6 @@ public class CurrencyListFragment extends MvpAppCompatFragment implements Curren
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_currency_list, container, false);
     }
 
@@ -54,9 +55,15 @@ public class CurrencyListFragment extends MvpAppCompatFragment implements Curren
         recyclerView.setLayoutManager(layoutManager);
 
         List<Account> accounts = new ArrayList<>();
-        adapter = new AccountsAdapter(accounts);
+//        adapter = new AccountsAdapter(accounts);
+
+        adapter = new CompositeDelegateAdapter
+                .Builder<>()
+                .add(new UsdDelegateAdapter())
+                .build();
 
         recyclerView.setAdapter(adapter);
+
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(requireContext(),
                 layoutManager.getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
@@ -68,7 +75,6 @@ public class CurrencyListFragment extends MvpAppCompatFragment implements Curren
     public void loadList(List<Account> accounts) {
         if (accounts != null) {
             adapter.updateAccounts(accounts);
-            adapter.notifyDataSetChanged();
         }
     }
 }
