@@ -19,9 +19,7 @@ public class UsdDelegateAdapter extends
     protected void onBindViewHolder(@NonNull View view,
                                     @NonNull Account account,
                                     @NonNull UsdViewHolder viewHolder) {
-        viewHolder.tvName.setText(account.getName());
-        viewHolder.imageView.setImageResource(R.drawable.usd);
-        viewHolder.tvSum.setText(String.valueOf(account.getSum()));
+        viewHolder.bind(account);
     }
 
     //Получаем id необходимого layout
@@ -53,6 +51,12 @@ public class UsdDelegateAdapter extends
             tvName = itemView.findViewById(R.id.tv_account_name);
             imageView = itemView.findViewById(R.id.iv_account_image);
             tvSum = itemView.findViewById(R.id.tv_account_sum);
+        }
+
+        void bind(final Account account) {
+            tvName.setText(account.getName());
+            imageView.setImageResource(R.drawable.usd);
+            tvSum.setText(String.valueOf(account.getSum()));
         }
     }
 }
