@@ -13,7 +13,5 @@ public interface IDelegateAdapter<VH extends RecyclerView.ViewHolder, T> {
 
     void onBindViewHolder(@NonNull VH holder, @NonNull List<T> items, int position);
 
-    void onRecycled(VH holder);
-
     boolean isForViewType(@NonNull List<?> items, int position);
 }

@@ -1,6 +1,7 @@
 package com.example.taskbsc.ui;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,6 @@ import com.example.taskbsc.ui.adapter.UsdDelegateAdapter;
 import com.example.taskbsc.ui.presenter.Presenter;
 import com.example.taskbsc.ui.view.CurrencyListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -31,7 +31,9 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class CurrencyListFragment extends MvpAppCompatFragment implements CurrencyListView {
 
+    @SuppressLint("Log")
     private static final String TAG = CurrencyListFragment.class.getSimpleName();
+
     @InjectPresenter
     Presenter presenter;
     private CompositeDelegateAdapter adapter;
@@ -54,11 +56,9 @@ public class CurrencyListFragment extends MvpAppCompatFragment implements Curren
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        List<Account> accounts = new ArrayList<>();
-//        adapter = new AccountsAdapter(accounts);
-
         adapter = new CompositeDelegateAdapter
                 .Builder<>()
+                //добавление нового адаптера для ViewType
                 .add(new UsdDelegateAdapter())
                 .build();
 
@@ -66,6 +66,7 @@ public class CurrencyListFragment extends MvpAppCompatFragment implements Curren
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(requireContext(),
                 layoutManager.getOrientation());
+
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         presenter.getAccountsList();

@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 public class UsdDelegateAdapter extends
         BaseDelegateAdapter<UsdDelegateAdapter.UsdViewHolder, Account> {
 
+    //Связываем данные с ViewHolder
     @Override
     protected void onBindViewHolder(@NonNull View view,
                                     @NonNull Account account,
@@ -23,11 +24,13 @@ public class UsdDelegateAdapter extends
         viewHolder.tvSum.setText(String.valueOf(account.getSum()));
     }
 
+    //Получаем id необходимого layout
     @Override
     protected int getLayoutId() {
         return R.layout.usd_adapter_item;
     }
 
+    //Создаем необходимый ViewHolder
     @Override
     protected UsdViewHolder createViewHolder(View parent) {
         return new UsdViewHolder(parent);

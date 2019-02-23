@@ -20,11 +20,6 @@ public abstract class BaseDelegateAdapter<VH extends BaseViewHolder, T> implemen
 
     abstract protected VH createViewHolder(View parent);
 
-    @Override
-    public void onRecycled(VH holder) {
-
-    }
-
     @NonNull
     @Override
     public final RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,6 +28,8 @@ public abstract class BaseDelegateAdapter<VH extends BaseViewHolder, T> implemen
                 .from(parent.getContext())
                 .inflate(getLayoutId(), parent, false);
         final VH holder = createViewHolder(inflatedView);
+
+        //Устанавливаем ItemInflateListener для ViewHolder
         holder.setListener((viewType1, view) -> onBindViewHolder(view, (T) viewType1, holder));
         return holder;
     }

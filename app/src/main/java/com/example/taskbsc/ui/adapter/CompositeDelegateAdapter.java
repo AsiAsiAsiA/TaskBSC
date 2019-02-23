@@ -13,19 +13,22 @@ public class CompositeDelegateAdapter<T> extends RecyclerView.Adapter<RecyclerVi
     private static final int FIRST_VIEW_TYPE = 0;
 
     private final SparseArray<IDelegateAdapter> typeToAdapterMap;
-    private final @NonNull
-    List<T> data = new ArrayList<>();
+    @NonNull
+    private final List<T> data = new ArrayList<>();
 
     private CompositeDelegateAdapter(@NonNull SparseArray<IDelegateAdapter> typeToAdapterMap) {
         this.typeToAdapterMap = typeToAdapterMap;
     }
 
+    //Возвращает ViewType по position
     @Override
     public int getItemViewType(int position) {
+        //Достаем все IDelegateAdapter из SparseArray
         for (int i = FIRST_VIEW_TYPE; i < typeToAdapterMap.size(); i++) {
             final IDelegateAdapter delegate = typeToAdapterMap.valueAt(i);
 
             //noinspection unchecked
+            //Если ViewType соответствует данным, то возвращаем его
             if (delegate.isForViewType(data, position)) {
                 return typeToAdapterMap.keyAt(i);
             }
@@ -37,6 +40,7 @@ public class CompositeDelegateAdapter<T> extends RecyclerView.Adapter<RecyclerVi
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //Создание ViewHolder по viewType
         return typeToAdapterMap.get(viewType).onCreateViewHolder(parent, viewType);
     }
 
@@ -49,11 +53,7 @@ public class CompositeDelegateAdapter<T> extends RecyclerView.Adapter<RecyclerVi
         } else {
             throw new NullPointerException("can not find adapter for position " + position);
         }
-    }
-
-    @Override
-    public void onViewRecycled(@NonNull RecyclerView.ViewHolder holder) {
-        typeToAdapterMap.get(holder.getItemViewType()).onRecycled(holder);
+        //TODO: проброс ошибок
     }
 
     @Override
@@ -62,11 +62,13 @@ public class CompositeDelegateAdapter<T> extends RecyclerView.Adapter<RecyclerVi
     }
 
     public void updateAccounts(@NonNull List<T> data) {
+        //TODO: diffutil
         this.data.clear();
         this.data.addAll(data);
         notifyDataSetChanged();
     }
 
+    //Pattern Builder
     public static class Builder<T> {
 
         private final SparseArray<IDelegateAdapter> typeToAdapterMap;
@@ -77,6 +79,7 @@ public class CompositeDelegateAdapter<T> extends RecyclerView.Adapter<RecyclerVi
         }
 
         public Builder<T> add(@NonNull IDelegateAdapter<?, ? extends T> delegateAdapter) {
+            //Кладем в SparseArray класс реализующий IDelegateAdapter
             typeToAdapterMap.put(count++, delegateAdapter);
             return this;
         }
