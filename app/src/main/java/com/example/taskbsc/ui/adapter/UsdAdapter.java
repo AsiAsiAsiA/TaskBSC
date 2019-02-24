@@ -6,13 +6,16 @@ import android.widget.TextView;
 
 import com.example.taskbsc.R;
 import com.example.taskbsc.domain.Account;
+import com.example.taskbsc.domain.Currency;
+import com.example.taskbsc.ui.adapter.base.BaseDelegateAdapter;
+import com.example.taskbsc.ui.adapter.base.BaseViewHolder;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
 
-public class UsdDelegateAdapter extends
-        BaseDelegateAdapter<UsdDelegateAdapter.UsdViewHolder, Account> {
+public class UsdAdapter extends
+        BaseDelegateAdapter<UsdAdapter.UsdViewHolder, Account> {
 
     //Связываем данные с ViewHolder
     @Override
@@ -37,7 +40,11 @@ public class UsdDelegateAdapter extends
     //Проверка подходит ли item для ViewType
     @Override
     public boolean isForViewType(@NonNull List<?> items, int position) {
-        return items.get(position) instanceof Account;
+        Object object = items.get(position);
+        if (!(items.get(position) instanceof Account)) {
+            return false;
+        }
+        return ((Account) object).getCurrency() == Currency.USD;
     }
 
     final static class UsdViewHolder extends BaseViewHolder {

@@ -11,8 +11,10 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.taskbsc.R;
 import com.example.taskbsc.domain.Account;
 import com.example.taskbsc.moxyandroidx.MvpAppCompatFragment;
-import com.example.taskbsc.ui.adapter.CompositeDelegateAdapter;
-import com.example.taskbsc.ui.adapter.UsdDelegateAdapter;
+import com.example.taskbsc.ui.adapter.EurAdapter;
+import com.example.taskbsc.ui.adapter.RurAdapter;
+import com.example.taskbsc.ui.adapter.UsdAdapter;
+import com.example.taskbsc.ui.adapter.base.CompositeDelegateAdapter;
 import com.example.taskbsc.ui.presenter.Presenter;
 import com.example.taskbsc.ui.view.CurrencyListView;
 
@@ -59,7 +61,9 @@ public class CurrencyListFragment extends MvpAppCompatFragment implements Curren
         adapter = new CompositeDelegateAdapter
                 .Builder<>()
                 //добавление нового адаптера для ViewType
-                .add(new UsdDelegateAdapter())
+                .add(new UsdAdapter())
+                .add(new RurAdapter())
+                .add(new EurAdapter())
                 .build();
 
         recyclerView.setAdapter(adapter);

@@ -1,4 +1,4 @@
-package com.example.taskbsc.ui.adapter;
+package com.example.taskbsc.ui.adapter.base;
 
 import android.util.SparseArray;
 import android.view.ViewGroup;

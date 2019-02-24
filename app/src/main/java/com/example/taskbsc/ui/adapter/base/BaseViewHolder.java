@@ -1,13 +1,13 @@
-package com.example.taskbsc.ui.adapter;
+package com.example.taskbsc.ui.adapter.base;
 
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-class BaseViewHolder extends RecyclerView.ViewHolder {
+public class BaseViewHolder extends RecyclerView.ViewHolder {
     private ItemInflateListener listener;
 
-    BaseViewHolder(View parent) {
+    public BaseViewHolder(View parent) {
         super(parent);
     }
 
