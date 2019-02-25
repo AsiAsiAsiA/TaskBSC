@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.arellomobile.mvp.MvpDelegate;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -43,7 +44,7 @@ public class MvpAppCompatFragment extends Fragment {
         getMvpDelegate().onAttach();
     }
 
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
         mIsStateSaved = true;
