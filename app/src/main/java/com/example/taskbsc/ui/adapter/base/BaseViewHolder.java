@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class BaseViewHolder extends RecyclerView.ViewHolder {
     private ItemInflateListener listener;
 
-    public BaseViewHolder(View parent) {
+    protected BaseViewHolder(View parent) {
         super(parent);
     }
 

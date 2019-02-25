@@ -3,15 +3,9 @@ package com.example.taskbsc.domain;
 import java.util.Objects;
 
 public class Account {
-    private String name;
-    private Currency currency;
-    private double sum;
-
-//TODO: maybe delete in future
-    //    public Account(String name, Currency currency) {
-//        this.name = name;
-//        this.currency = currency;
-//    }
+    private final String name;
+    private final Currency currency;
+    private final double sum;
 
     public Account(String name, Currency currency, double sum) {
         this.name = name;

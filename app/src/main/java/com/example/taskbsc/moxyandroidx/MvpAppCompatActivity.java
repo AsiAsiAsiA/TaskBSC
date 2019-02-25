@@ -1,9 +1,11 @@
 package com.example.taskbsc.moxyandroidx;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.arellomobile.mvp.MvpDelegate;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * @author Alexander Bliniov
  * @author Konstantin Tckhovrebov
  */
+@SuppressLint("Registered")
 @SuppressWarnings("unused")
 public class MvpAppCompatActivity extends AppCompatActivity {
     private MvpDelegate<? extends MvpAppCompatActivity> mMvpDelegate;
@@ -40,7 +43,7 @@ public class MvpAppCompatActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
         getMvpDelegate().onSaveInstanceState(outState);

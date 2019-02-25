@@ -42,8 +42,8 @@ public class EurAdapter extends BaseDelegateAdapter<EurAdapter.EurViewHolder, Ac
 
     final static class EurViewHolder extends BaseViewHolder {
 
-        TextView tvName;
-        ImageView imageView;
+        final TextView tvName;
+        final ImageView imageView;
 
         private EurViewHolder(View parent) {
             super(parent);
@@ -53,7 +53,7 @@ public class EurAdapter extends BaseDelegateAdapter<EurAdapter.EurViewHolder, Ac
 
         void bind(final Account account) {
             tvName.setText(account.getName());
-            imageView.setImageResource(R.drawable.rur);
+            imageView.setImageResource(R.drawable.eur);
         }
     }
 }

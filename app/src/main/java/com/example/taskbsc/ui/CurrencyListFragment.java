@@ -36,8 +36,10 @@ public class CurrencyListFragment extends MvpAppCompatFragment implements Curren
     @SuppressLint("Log")
     private static final String TAG = CurrencyListFragment.class.getSimpleName();
 
+    @SuppressWarnings("WeakerAccess")
     @InjectPresenter
     Presenter presenter;
+
     private CompositeDelegateAdapter adapter;
 
     static Fragment newInstance() {

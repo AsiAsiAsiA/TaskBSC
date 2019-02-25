@@ -43,9 +43,9 @@ public class RurAdapter extends
 
     final static class RurViewHolder extends BaseViewHolder {
 
-        ImageView imageView;
-        TextView tvName;
-        TextView tvSum;
+        final ImageView imageView;
+        final TextView tvName;
+        final TextView tvSum;
 
         private RurViewHolder(View parent) {
             super(parent);

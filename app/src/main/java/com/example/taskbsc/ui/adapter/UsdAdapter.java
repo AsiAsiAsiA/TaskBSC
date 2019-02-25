@@ -49,9 +49,9 @@ public class UsdAdapter extends
 
     final static class UsdViewHolder extends BaseViewHolder {
 
-        TextView tvName;
-        ImageView imageView;
-        TextView tvSum;
+        final TextView tvName;
+        final ImageView imageView;
+        final TextView tvSum;
 
         private UsdViewHolder(View parent) {
             super(parent);
