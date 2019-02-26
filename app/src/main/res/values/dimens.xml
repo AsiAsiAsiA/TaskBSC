@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="regular_text_size">16sp</dimen>
+    <dimen name="title_text_size">25sp</dimen>
+
+    <dimen name="default_margin">8dp</dimen>
+
+    <!-- Размеры в ContactListItemDecorator -->
+    <!--<dimen name="offset">20dp</dimen>-->
+    <!--<dimen name="stroke_width">3dp</dimen>-->
+</resources>

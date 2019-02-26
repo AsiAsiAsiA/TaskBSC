@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface CurrencyListView extends MvpView {
     @StateStrategyType(AddToEndSingleStrategy.class)
-    void loadList(List<Account> accounts);
+    void showAccounts(List<Account> accounts);
 }

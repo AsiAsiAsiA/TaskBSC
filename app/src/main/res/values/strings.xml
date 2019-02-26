@@ -2,7 +2,7 @@
     <string name="app_name">TaskBSC</string>
 
 
-    <string name="title_currency_fragment">Currency List</string>
+    <string name="title_currency_fragment">Accounts</string>
 
     <!--Currencies code-->
     <string name="usd">USD</string>

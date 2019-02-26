@@ -53,7 +53,6 @@ public class CompositeDelegateAdapter<T> extends RecyclerView.Adapter<RecyclerVi
         } else {
             throw new NullPointerException("can not find adapter for position " + position);
         }
-        //TODO: проброс ошибок
     }
 
     @Override
@@ -62,7 +61,6 @@ public class CompositeDelegateAdapter<T> extends RecyclerView.Adapter<RecyclerVi
     }
 
     public void updateAccounts(@NonNull List<T> data) {
-        //TODO: diffutil
         this.data.clear();
         this.data.addAll(data);
         notifyDataSetChanged();
