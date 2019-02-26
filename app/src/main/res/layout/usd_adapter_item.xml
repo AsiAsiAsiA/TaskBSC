@@ -8,6 +8,8 @@
         android:id="@+id/tv_account_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="@dimen/regular_text_size"
         android:layout_weight="1" />
 
     <ImageView
@@ -21,7 +23,9 @@
         android:id="@+id/tv_account_sum"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:gravity="end" />
+        android:gravity="end"
+        android:textSize="@dimen/regular_text_size" />
 
 </LinearLayout>

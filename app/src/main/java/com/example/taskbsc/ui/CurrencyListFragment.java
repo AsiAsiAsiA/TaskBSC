@@ -79,7 +79,7 @@ public class CurrencyListFragment extends MvpAppCompatFragment implements Curren
     }
 
     @Override
-    public void loadList(List<Account> accounts) {
+    public void showAccounts(List<Account> accounts) {
         if (accounts != null) {
             adapter.updateAccounts(accounts);
         }

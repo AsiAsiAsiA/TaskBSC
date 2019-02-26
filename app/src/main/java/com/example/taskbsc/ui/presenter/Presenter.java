@@ -19,10 +19,10 @@ public class Presenter extends MvpPresenter<CurrencyListView> {
         Collections.sort(list, (a1, a2) ->
                 a1.getCurrency().ordinal() - a2.getCurrency().ordinal());
 
-        loadList(list);
+        showAccounts(list);
     }
 
-    private void loadList(@Nullable List<Account> accounts) {
-        getViewState().loadList(accounts);
+    private void showAccounts(@Nullable List<Account> accounts) {
+        getViewState().showAccounts(accounts);
     }
 }
